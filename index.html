@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Request Example</title>
+</head>
+<body>
+  <h1>JSONPlaceholder Example</h1>
+  <div id="data-container"></div>
+
+  <script>
+    // Funcao para fazer a solicitacao GET
+    function fetchData() {
+      // Substitua a URL pela API desejada
+      const apiUrl = 'https://jsonplaceholder.typicode.com/todos/1';
+
+      // Fazendo a solicitacao GET
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          // Exibindo os dados na pagina
+          const dataContainer = document.getElementById('data-container');
+          dataContainer.innerHTML = `<p>User ID: ${data.userId}</p><p>Title: ${data.title}</p>`;
+        })
+        .catch(error => console.error('Erro ao obter dados:', error));
+    }
+
+    // Chama a funcao ao carregar a pagina
+    window.onload = fetchData;
+  </script>
+</body>
+</html>
